@@ -49,37 +49,37 @@ print(true_divide(1, 2))
 mathematical_expression = create_list_of_elements("98 - 6 * 8 * 1.5 + 4 - 1 / 5")
 print(qualify_type_of_elements(mathematical_expression))
 
-def calculate_expression(expression_with_all_mathematical_operators):
+def calculate_expression(proritary_operations):
     expression_after_prioritaty_operators_calculus = []
     i = 0
 
-    while i < len(expression_with_all_mathematical_operators):
-        if (expression_with_all_mathematical_operators[i] != "*" and 
-            expression_with_all_mathematical_operators[i] != "/"):
-            expression_after_prioritaty_operators_calculus.append(expression_with_all_mathematical_operators[i]) 
-        elif (expression_with_all_mathematical_operators[i] == "*"):
-            expression_after_prioritaty_operators_calculus.append(multiply(expression_after_prioritaty_operators_calculus[-1], 
-            expression_with_all_mathematical_operators[i+1]))
-            del expression_after_prioritaty_operators_calculus[-2]
+    while i < len(proritary_operations):
+        if (proritary_operations[i] != "*" and 
+            proritary_operations[i] != "/"):
+            secondary_operations.append(proritary_operations[i]) 
+        elif (proritary_operations[i] == "*"):
+            secondary_operations.append(multiply(secondary_operations[-1], 
+            proritary_operations[i+1]))
+            del secondary_operations[-2]
             i+=1
-        elif (expression_with_all_mathematical_operators[i] == "/"):
-            expression_after_prioritaty_operators_calculus.append(true_divide(expression_after_prioritaty_operators_calculus[-1], 
-            expression_with_all_mathematical_operators[i+1]))
-            del expression_after_prioritaty_operators_calculus[-2]
+        elif (proritary_operations[i] == "/"):
+            secondary_operations.append(true_divide(secondary_operations[-1], 
+            proritary_operations[i+1]))
+            del secondary_operations[-2]
             i+=1
         i+=1
     i=0
 
-    result = expression_after_prioritaty_operators_calculus[0]
+    result = secondary_operations[0]
 
-    while i < len(expression_after_prioritaty_operators_calculus): 
-        if (expression_after_prioritaty_operators_calculus[i] == "-"):
-            result = minus(result,expression_after_prioritaty_operators_calculus[i+1])
-        elif (expression_after_prioritaty_operators_calculus[i] == "+"):
-            result = add(result,expression_after_prioritaty_operators_calculus[i+1])
+    while i < len(secondary_operations): 
+        if (secondary_operations[i] == "-"):
+            result = minus(result,secondary_operations[i+1])
+        elif (secondary_operations[i] == "+"):
+            result = add(result,secondary_operations[i+1])
         print(result)
         print(i)
-        print(expression_after_prioritaty_operators_calculus)
+        print(secondary_operations)
         print("-")
         i+=1
     print(result)
