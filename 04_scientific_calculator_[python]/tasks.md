@@ -4,8 +4,8 @@ Nous allons essayer de coder un parser d'expressions mathématique simples.
 
 Simples, car nous poserons les limitations suivantes :
 
-les seules opérateurs possibles seront +, -, _ et / (cette dernière en division réelle, pas entière),
-les règles de priorités seront les plus simples : _ et / doivent se résoudre avant + et -, mais les parenthèses ou tout syntaxe changeant les priorités ne seront pas utilisées,
+les seules opérateurs possibles seront +, -, * et / (cette dernière en division réelle, pas entière),
+les règles de priorités seront les plus simples : * et / doivent se résoudre avant + et -, mais les parenthèses ou tout syntaxe changeant les priorités ne seront pas utilisées,
 les nombres ne peuvent pas être négatifs, même si le résultat final peut l'être,
 tous les éléments des expressions seront séparés les uns des autres par un espace.
 Les expressions mathématiques seront sous la forme d'une chaîne de caractères, par exemple :
@@ -15,16 +15,16 @@ Les expressions mathématiques seront sous la forme d'une chaîne de caractères
 "98 \* 6.3 + 45 - 7 / 2 + 87"
 Ces expressions ne seront pas valides :
 
-"3 _ -2" (nombre négatif)
-"4 _ ( 5 + 6 )" (parenthèses)
-"4\*3" (espaces manquants)
+"3 * -2" (nombre négatif)
+"4 * ( 5 + 6 )" (parenthèses)
+"4*3" (espaces manquants)
 Le choix du langage utilisé est libre.
 
 # Étape 1 - Parsing
 
 Créez une première fonction A qui prend une chaîne de caractère et retourne une liste de tous ses éléments dans l'ordre (nombres et opérateurs).
 
-A("4 + 6.2 \* 8")
+A("4 + 6.2 * 8")
 
 ["4", "+", "6.2", "*", "8"]
 
@@ -59,4 +59,4 @@ true_divide(1, 2)
 
 C'est maintenant que le jus de cerveau va commencer à suinter : il faut calculer enfin notre expression mathématique.
 
-Exemple d'expression mathématique : "98 - 6 _ 8 _ 1.5 + 4 - 1 / 5"
+Exemple d'expression mathématique : "98 - 6 * 8 * 1.5 + 4 - 1 / 5"
